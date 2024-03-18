@@ -1,22 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 //Importa el orden de las rutas, de arriba a abajo
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class); //Array con dos controladores[Clase,Metodo]
 
-Route::get('/posts', function(){
-    return "Bienvenido a los posts";
-});
+Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/posts/{post}/{categoria?}', function($post,$categoria= null){ //mismo nombre de la variable del contenido variable
-    if($categoria){
-        return "Aqui se mostrara el contenido del post {$post} de la categoria {$categoria}";
-    }
-    return "Aqui se mostrara el contenido del post {$post}";
-});
+Route::get('/posts/create', [PostController::class, 'create']);
+
+Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
 
 /*Route::get('/posts/{post}/{categoria}', function ($post,$categoria){
     return "Aqui se mostrara el contenido del post {$post} de la categoria {$categoria}";
