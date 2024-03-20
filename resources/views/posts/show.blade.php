@@ -8,12 +8,24 @@
 </head>
 <body>
     holasldkjaldskjkl  
+    
+    @if ($categoria) 
+    <h1>Aqui se mostrara el contenido del {{ $post }} de la categoria {{ $categoria }} </h1>
+    @else
+    <h1>Aqui se mostrara el contenido del {{ $post}} 
+    </h1>
+    @endif
+
+
+
+<!--Forma 2 mas larga y por logica 
     <h1><?php 
-    if($categoria){
-        return "Aqui se mostrara el contenido del post $post de la categoria $categoria";
-    }
-    return "Aqui se mostrara el contenido del post $post";
-    ?> </h1>
+        if($categoria){
+         ?>  "Aqui se mostrara el contenido del post <?= $post ?> de la categoria <?=$categoria ?>" 
+        <?php } else {
+        ?> "Aqui se mostrara el contenido del post <?= $post ?> "
+        <?php 
+        }?> </h1> -->
 </body>
 </html>
 
