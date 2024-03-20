@@ -7,7 +7,6 @@
     <title>Laravel 11 - Post detalle</title>
 </head>
 <body>
-    holasldkjaldskjkl  
     
     @if ($categoria) 
     <h1>Aqui se mostrara el contenido del {{ $post }} de la categoria {{ $categoria }} </h1>
