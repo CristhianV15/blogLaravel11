@@ -1,4 +1,4 @@
-@props(['type'])
+@props(['type' => ' info']) <!--En caso de no recibir type desde el front end, por defecto se selecciona la info-->
 
 @php
     switch ($type) {
@@ -18,10 +18,12 @@
             $class = 'text-gray-800 bg-gray-50 dark:bg-gray-800 dark:text-gray-400'; 
             break;
         default:
-            # code...
+            $class = 'text-blue-800 bg-blue-50 dark:bg-gray-800 dark:text-blue-400';
             break;
     }    
 @endphp
-  <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+  <div {{ $attributes-> merge(['class' => 'p-4 text-sm rounded-lg ' . $class])}} role="alert">
     <span class="font-medium">{{ $title ?? 'Información de la alerta' }}</span> {{ $slot }} <!--Información de la alerta variable mediante operadores ternarios-->  
-  </div>
+</div>
+
+<!--Forma para un sola clase : <div class="p-4 mb-4 text-sm rounded-lg {$class} > ((con doble llavela variable )) -->

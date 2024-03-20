@@ -13,11 +13,12 @@
         <h1>Bienvenido a la página principal</h1>
     </div>
     <!--para llamar a un componente -->
-    <x-alert type="Info">
+    <x-alert type="success" class="mb-4">
       <x-slot name="title">  <!--Para llamar solo a una parte del componente-->
       Información de la alerta
       </x-slot>
-      Cotenido de la alerta
+      Contenido de la alerta
     </x-alert>  
+    <div>Contenedor para probar espaciado de mv-4</div>
 </body>
 </html>
