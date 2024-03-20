@@ -7,6 +7,6 @@
     <title>Laravel 11 | Posts </title>
 </head>
 <body>
-    <h1>Aquí se mostraran todos los posts </h1>
+    <h1>Aquí se mostrarán todos los posts </h1>
 </body>
 </html>

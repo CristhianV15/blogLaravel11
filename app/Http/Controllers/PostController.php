@@ -9,15 +9,15 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        return "Aqui se mostraran todos los post";
+        return view ('posts.index');
     }
     public function create(){
-        return "Aqui habra un formulario para crear un post";
+        return view ('posts.create');
     }
     public function show($post, $categoria = null){
-        if($categoria){
-            return "Aqui se mostrara el contenido del post {$post} de la categoria {$categoria}";
-        }
-        return "Aqui se mostrara el contenido del post {$post}";
+        return view ('posts.show', [
+            'post' => $post,
+            'categoria' => $categoria
+        ]);
     }
 }
