@@ -47,8 +47,16 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
             ->take(7)->get();
     return $post;
     */
-    $post = Post::find(2);
-   // $post ->delete();
+    // $post ->delete();
+    $post = Post::all();
+   //return $post->created_at->format('d-m-Y');
+    //return $post->published_at->format('d/m/Y');
+    $post->map(function ($post) {
+        $post->estado = $post->is_active == 1 ? "Activo" : "Inactivo";
+        return $post;
+    });
 
-   return $post;
+    return $post;
+    
+
 });
