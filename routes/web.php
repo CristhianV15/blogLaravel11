@@ -47,6 +47,8 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
             ->take(7)->get();
     return $post;
     */
-    $post = Post::find(1);
-    $post ->delete();
+    $post = Post::find(2);
+   // $post ->delete();
+
+   return $post;
 });
