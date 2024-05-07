@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\User;
 
 //Importa el orden de las rutas, de arriba a abajo
 Route::get('/', HomeController::class); //Array con dos controladores[Clase,Metodo]
@@ -55,8 +56,9 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
         $post->estado = $post->is_active == 1 ? "Activo" : "Inactivo";
         return $post;
     });
-
-    return $post;
+    $user = User::find(1);
+    return $user;
+//    return $post;
     
 
 });

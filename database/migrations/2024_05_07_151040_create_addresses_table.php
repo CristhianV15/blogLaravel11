@@ -17,11 +17,14 @@ return new class extends Migration
             $table->string('Ciudad');
             $table->string('Distrito');
             $table->string('Calle');
-            $table->timestamps();
 
-            //Llave foranea
-            $table->unsignedBigInteger('user_id'); //nombre del modelo_nombre de la llave primaria
-            $table->foreign('user_id')->references('id')->on('users');
+            //Llave foranea 1° forma
+           /* $table->unsignedBigInteger('user_id'); //nombre del modelo_nombre de la llave primaria
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users');*/
+            $table->timestamps();
+            $table->foreignId('user_id')->constrained(); //forma 2 para crear campo de llave foranea , recomendado si se usan convecciones
         });
     }
 
