@@ -45,5 +45,9 @@ class User extends Authenticatable
         ];
     }
 
-    public 
+    public function address()
+    {
+       return $this->hasOne(Address::class) ; // relacion entre usuarios y direcciones , solo con convecciones
+       //return $this->hasOne(Address::class, 'user_id','id'); // sin convecciones
+    }
 }

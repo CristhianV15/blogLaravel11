@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Models\Address;
 use App\Models\Post;
 use App\Models\User;
 
@@ -56,9 +57,13 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
         $post->estado = $post->is_active == 1 ? "Activo" : "Inactivo";
         return $post;
     });
-    $user = User::find(1);
-    return $user;
 //    return $post;
-    
+
+    //Retornar datos del usuario con relacion a la tabla direccion
+   /* $user = User::find(1);
+    return $user->address;*/
+
+    $address = Address::find(1);
+    return $address->user;    
 
 });
