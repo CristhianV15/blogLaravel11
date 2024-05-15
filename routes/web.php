@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Models\Address;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 
@@ -63,7 +64,12 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
    /* $user = User::find(1);
     return $user->address;*/
 
-    $address = Address::find(1);
-    return $address->user;    
+ /*   $address = Address::find(1);
+    return $address->user;    */
 
+   /* $post = Post::find(1);
+    return $post->comments;*/
+
+    $comment = Comment::first();
+    return $comment;
 });

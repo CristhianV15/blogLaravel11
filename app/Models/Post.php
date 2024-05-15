@@ -32,4 +32,9 @@ class Post extends Model
             }
         );
     }
+
+    //Relacion 1 a muchos
+    protected function comments(){
+        return $this-> hasMany(Comment::class, 'post_id','id'); //Convencion: nombre del modelo_ luego campo id
+    }
 }
