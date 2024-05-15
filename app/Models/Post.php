@@ -34,7 +34,13 @@ class Post extends Model
     }
 
     //Relacion 1 a muchos
-    protected function comments(){
+    public function comments(){
         return $this-> hasMany(Comment::class, 'post_id','id'); //Convencion: nombre del modelo_ luego campo id
+    }
+     
+    //Relacion muchos a muchos
+    public function tags(){
+        return $this->belongsToMany(Tag::class, 'post_tag')//en caso de no seguir la nomenclatura agregar el nombre de la tabla al final 
+        ->withTimestamps(); 
     }
 }

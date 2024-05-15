@@ -54,11 +54,12 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
     $post = Post::all();
    //return $post->created_at->format('d-m-Y');
     //return $post->published_at->format('d/m/Y');
+
+/* 
     $post->map(function ($post) {
         $post->estado = $post->is_active == 1 ? "Activo" : "Inactivo";
         return $post;
-    });
-//    return $post;
+    }); */
 
     //Retornar datos del usuario con relacion a la tabla direccion
    /* $user = User::find(1);
@@ -70,6 +71,13 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
    /* $post = Post::find(1);
     return $post->comments;*/
 
-    $comment = Comment::first();
-    return $comment;
+   /*  $comment = Comment::first();
+    return $comment; */
+
+    $post =Post::find(1);
+    //$post->tags()->attach([1,2]); //La tabla post estara referenciada con el numero aparecido en attach (agregar datos)
+    //$post ->tags()->detach(2); // para eliminar una etiqueta 
+    $post ->tags()-> sync([2,3]); //fusion entre dettach y attach 
+    return $post->tags;
+    
 });
