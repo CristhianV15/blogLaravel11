@@ -74,10 +74,12 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
    /*  $comment = Comment::first();
     return $comment; */
 
-    $post =Post::find(1);
+    /* $post =Post::find(1);
     //$post->tags()->attach([1,2]); //La tabla post estara referenciada con el numero aparecido en attach (agregar datos)
     //$post ->tags()->detach(2); // para eliminar una etiqueta 
     $post ->tags()-> sync([2,3]); //fusion entre dettach y attach 
-    return $post->tags;
+    return $post->tags; */
     
+    $user = User::first();
+    return $user->address; //ahora se puede acceder de manera directa a address sin pasar por profile mediante Has One Through
 });

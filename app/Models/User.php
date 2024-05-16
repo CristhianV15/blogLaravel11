@@ -45,9 +45,16 @@ class User extends Authenticatable
         ];
     }
 
-    public function address()
-    {
-       return $this->hasOne(Address::class) ; // relacion entre usuarios y direcciones , solo con convecciones
-       //return $this->hasOne(Address::class, 'user_id','id'); // sin convecciones
+    //relacion uno a uno
+    public function profile(){
+        return $this->hasOne(Profile::class);// relacion entre usuarios y perfil , solo con convecciones
+        //return $this->hasOne(Address::class, 'user_id','id'); // sin convecciones
+
     }
+
+    //Relacion de uno a uno a través de : Has One Throug
+    public function address(){
+        return $this->hasOneThrough(Address::class,Profile::class); //Debe acceder antes a la relación de perfil para ir a la de 
+    }
+
 }

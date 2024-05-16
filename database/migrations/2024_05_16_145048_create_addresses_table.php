@@ -24,7 +24,7 @@ return new class extends Migration
             ->references('id')
             ->on('users');*/
             $table->timestamps();
-            $table->foreignId('user_id')->constrained(); //forma 2 para crear campo de llave foranea , recomendado si se usan convecciones
+            $table->foreignId('profile_id')->constrained(); //forma 2 para crear campo de llave foranea , recomendado si se usan convecciones
         });
     }
 
