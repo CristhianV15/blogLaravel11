@@ -80,6 +80,9 @@ Route::get('/posts/{post}/{categoria?}', [PostController::class, 'show']);
     $post ->tags()-> sync([2,3]); //fusion entre dettach y attach 
     return $post->tags; */
     
-    $user = User::first();
-    return $user->address; //ahora se puede acceder de manera directa a address sin pasar por profile mediante Has One Through
+   /*  $user = User::first();
+    return $user->address; //ahora se puede acceder de manera directa a address sin pasar por profile mediante Has One Through */
+
+    $user = User::find(1);
+    return $user->comments;
 });

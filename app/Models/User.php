@@ -52,9 +52,18 @@ class User extends Authenticatable
 
     }
 
+    //Relacion uno a muchos 
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
     //Relacion de uno a uno a través de : Has One Throug
     public function address(){
         return $this->hasOneThrough(Address::class,Profile::class); //Debe acceder antes a la relación de perfil para ir a la de 
     }
 
+    //Relacion uno a muchos a traves de : Has ManyThrough
+    public function comments(){
+        return $this->hasManyThrough(Comment::class,Post::class); //Debe acceder a la relación post y luego a comentarios
+    }
 }
