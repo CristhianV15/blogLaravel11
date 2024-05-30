@@ -5,6 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage; // Import Storage facade
+
+use Faker\Generator as Faker; // Import Faker class
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -23,10 +26,22 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = app(Faker::class); // Instancia de la clase Faker
+
+        $femaleName = $faker->name('female');
+    // Generate random filename with female name and .jpg extension
+        $imageFilename = Str::slug($femaleName) . '.jpg'; //el Str::slug Convierte el nombre de usuario en un formato seguro para nombres de archivo (reemplaza espacios por guiones bajos y eliminando caracteres especiales.) 
+
+
+
+        // Store image using Faker and generated filename
+        Storage::put($imageFilename, $faker->image());
+        
         return [
-            'name' => fake()->name(),
+            'name' =>$femaleName    ,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'avatar' =>  $imageFilename,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

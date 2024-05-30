@@ -26,5 +26,8 @@ class DatabaseSeeder extends Seeder
             CommentsSeeder::class,
             AdressSeeder::class,
        ]);
+
+    //Crear usuarios random mediante Factory
+    User::factory(10)->create();    
     }
 }
