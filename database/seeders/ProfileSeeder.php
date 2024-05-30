@@ -15,10 +15,10 @@ class ProfileSeeder extends Seeder
     {
         $profile = new Profile();
         $profile -> created_at = now();
-        $profile -> update_at = now();
+        $profile -> updated_at = now();
         $profile -> facebook = "Admin fb";
         $profile -> twitter = "Admin Twt";
-        $profile 
-        facebook , twitter , user_id
+        $profile -> user_id = 1;
+        $profile -> save();
     }
 }
