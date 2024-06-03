@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
        ]);
 
     //Crear usuarios random mediante Factory
-    User::factory(10)->create();    
+    User::factory(1)->create();    
     }
 }
