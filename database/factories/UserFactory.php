@@ -28,28 +28,27 @@ class UserFactory extends Factory
     {
         $faker = app(Faker::class); // Instancia de la clase Faker
 
-        $femaleName = $faker->name('female');
-        // Generate random filename with female name and .jpg extension
+        $femaleName = $faker->name('female'); // Generar nombre femenimo
         $imageFilename = Str::slug($femaleName) . '.jpg'; //el Str::slug Convierte el nombre de usuario en un formato seguro para nombres de archivo (reemplaza espacios por guiones bajos y eliminando caracteres especiales.) 
 
 
-        // Check if the directory exists and create it if it doesn't
+        // Verifica si la dirección images/users existe, caso contrario la crea
         if (!Storage::exists('images/users')) {
             Storage::makeDirectory('images/users');
         }
         
-        // Store image using Faker and generated filename
+        // Se guarda la imagen la ruta asignada
         Storage::put('images/users/' . $imageFilename, $faker->image());
 
 
-        return [
-            'name' => $femaleName,
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'avatar' =>  $imageFilename,
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
-        ];
+            return [
+                'name' => $femaleName,
+                'email' => fake()->unique()->safeEmail(),
+                'email_verified_at' => now(),
+                'avatar' =>  $imageFilename,
+                'password' => static::$password ??= Hash::make('password'),
+                'remember_token' => Str::random(10),
+            ];
     }
 
     /**
